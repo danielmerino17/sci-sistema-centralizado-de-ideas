@@ -59,11 +59,13 @@ class IdeasTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                SelectFilter::make('categoria_id') // El campo de la base de datos que relaciona la categoría
-                ->relationship('categoria', 'nombre') // Relación y campo que se mostrará en el selector del filtro
-                ->label('Filtrar por Categoría')
-                ->searchable()
-                ->preload(),
+                SelectFilter::make('estado')
+                    ->label('Filtrar por estado')
+                    ->options([
+                        'registrada' => 'Registrada',
+                        'en revisión' => 'En revisión',
+                        'aprobada' => 'Aprobada',
+                    ]),
             ])
             ->recordActions([
                 EditAction::make(),     // Se edita la opción.
