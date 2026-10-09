@@ -65,12 +65,13 @@ class IdeasTable
                         'registrada' => 'Registrada',
                         'en revisión' => 'En revisión',
                         'aprobada' => 'Aprobada',
+                        'rechazada' => 'Rechazada',
                     ]),
             ])
             ->recordActions([
                 EditAction::make(),     // Se edita la opción.
                 DeleteAction::make(),  // Se borra la opción.
-                ViewAction::make(),     // Se visualiza la opción.
+                ViewAction::make(),     // Se visualiza la opción.  
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
