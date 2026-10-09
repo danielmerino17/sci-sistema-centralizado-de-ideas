@@ -11,12 +11,16 @@ class IdeaForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columnSpanFull()
             ->components([
                 TextInput::make('titulo')
-                    ->required(),
-                Textarea::make('descripcion')
                     ->required()
-                    ->columnSpanFull(),
+                    ->default('registrada'),
+                Textarea::make('autor')
+                    ->required(),
+                Select::make('categoria_id')
+                    ->relationship('categoria', 'nombre')
+                    ->requiered(),
             ]);
     }
 }
