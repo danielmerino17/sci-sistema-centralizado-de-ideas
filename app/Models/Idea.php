@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Idea extends Model
 {
+    use SoftDeletes;  // Habilitar la eliminación suave
 
     protected $fillable = ['titulo','descripcion','estado','autor','categoria_id'];
 
