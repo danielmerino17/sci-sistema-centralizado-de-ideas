@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use App\Filament\Resources\Ideas\Schemas\IdeaInfolist;
 
 class IdeaResource extends Resource
 {
@@ -25,6 +26,11 @@ class IdeaResource extends Resource
     public static function form(Schema $schema): Schema
     {
         return IdeaForm::configure($schema);
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return IdeaInfolist::configure($schema);
     }
 
     public static function table(Table $table): Table
