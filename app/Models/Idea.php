@@ -10,7 +10,7 @@ class Idea extends Model
 {
     use SoftDeletes;  // Habilitar la eliminación suave
 
-    protected $fillable = ['titulo','descripcion','estado','autor','categoria_id'];
+    protected $fillable = ['titulo','descripcion','estado','autor','categoria_id', 'observacion'];
 
     public function categoria(): BelongsTo
     {

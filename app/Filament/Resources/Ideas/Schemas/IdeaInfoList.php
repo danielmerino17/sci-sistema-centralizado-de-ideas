@@ -26,7 +26,7 @@ class IdeaInfoList
                     ->label('Categoría de la idea'),
                 TextEntry::make('estado') 
                     ->label('Estado de la idea')
-                    ->badge()
+                    ->badge()   
                     ->color('info'), // Color del texto.
                 TextEntry::make('created_at')
                     ->label('Fecha de creación')
