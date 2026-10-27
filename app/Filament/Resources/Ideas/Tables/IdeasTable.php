@@ -137,6 +137,8 @@ class IdeasTable
             ])
 
 
+            ->recordUrl(null)
+            ->recordAction(null)
             ->toolbarActions([
                 BulkActionGroup::make([
                    // DeleteBulkAction::make(),

@@ -13,12 +13,16 @@ class CategoriaForm
         return $schema
             ->components([
                 TextInput::make('nombre')
-                    ->email() // Campo de texto para correo electrónico (true = válido, false = no válido).
-                    ->password(false) // Campo de texto normal (false = no oculto    |     true = oculto).
+                    // ->email() // Campo de texto para correo electrónico (true = válido, false = no válido).
+                    // ->password(false) // Campo de texto normal (false = no oculto    |     true = oculto).
                     ->label('Nombre de categoría')
                     ->helperText('Ingresa el nombre de la categoría') // Ayuda al usuario a entender qué información se espera.
                     ->placeholder('Ej: Categoría') // Texto de ejemplo dentro del campo.
                     // ->disable() // Deshabilita el campo (no editable).
+                    ->unique()  
+                    ->validationMessages([
+                        'unique' => 'Ya existe una idea registrada con ese título',
+                    ])
                     
                     ->required(),     // Campo requerido (OGBLIGATORIO).
                 Textarea::make('descripcion')
