@@ -56,8 +56,8 @@ class IdeasTable
                 TextColumn::make('categoria.nombre')
                     ->label('Categoría')
                     ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),   
+                    ->sortable(),
+                    // ->toggleable(isToggledHiddenByDefault: true),   
 
                 TextColumn::make('created_at')
                     ->label('Creado el')
