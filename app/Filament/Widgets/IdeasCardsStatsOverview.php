@@ -9,6 +9,7 @@ use App\Models\Categoria;
 
 class IdeasCardsStatsOverview extends StatsOverviewWidget
 {
+    protected static ?int $sort = 1;
     protected function getStats(): array
     {
         // Tarea 29 de octubre: card para contar ideas por categoría.
@@ -24,17 +25,30 @@ class IdeasCardsStatsOverview extends StatsOverviewWidget
         $aprobadas = Idea::where('estado', 'aprobada')->count();
         $rechazadas = Idea::where('estado', 'rechazada')->count();    
 
+        $categorias = Categoria::withCount('ideas')->get();
+
+        $detalleCategorias = '';
+
+        foreach ( $categorias as $categoria) {
+            $detalleCategorias .= $categoria->nombre . ': ' . $categoria->ideas_count . ' | ';
+        }   
+
         return [
             // Card del total de ideas por estado.
             Stat::make('Total de ideas', Idea::count())->icon('heroicon-o-light-bulb')
             ->description("Registradas: $registradas | " . "En revisión: $revision | " . "Aprobadas: $aprobadas | " . "Rechizadas: $rechazadas "),  // Tarea 27 de octubre.
             
             // Card Total de categorías.
-            Stat::make('Total de categorías', Categoria::count())->icon('heroicon-s-tag'),
+            Stat::make('Total de categorías', Categoria::count())->icon('heroicon-s-tag')
+            ->description($detalleCategorias),
 
             // Card para contar ideas por categoría (Extra mío).
-            Stat::make('Ideas por categoría', 'Distribución')->icon('heroicon-o-chart-pie')
-            ->description("Medio ambiente: $cTecnologia | " . "Salud: $cEducacion | " . "Educación: $cSalud | " . "Medio Ambiente: $cMedioAmbiente | " . "Entretenimiento: $cEntretenimiento "),
+            //Stat::make('Ideas por categoría', 'Distribución')->icon('heroicon-o-chart-pie')
+            //->description("Medio ambiente: $cTecnologia | " . "Salud: $cEducacion | " . "Educación: $cSalud | " . "Medio Ambiente: $cMedioAmbiente | " . "Entretenimiento: $cEntretenimiento "),
         ];
+    }
+
+    protected function getColumns(): int {
+        return 1;
     }
 }
