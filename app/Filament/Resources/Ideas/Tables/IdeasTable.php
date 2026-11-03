@@ -96,6 +96,7 @@ class IdeasTable
                 
                 // Clase 23 de octubre de 2026: Opción de aprobar.
                 Action::make('aprobar')
+                    ->authorize('cambiarEstado') // Clase 3 de noviembre: se agregó la autorización para cambiar el estado
                     ->label('Aprobar')
                     ->color('success')
                     ->requiresConfirmation()
@@ -113,6 +114,7 @@ class IdeasTable
 
                 // Práctica 23 de octubre de 2026: Opción de rechazar.
                 Action::make('rechazar')
+                    ->authorize('cambiarEstado')
                     ->label('Rechazar')
                     ->color('danger')
                     ->icon('heroicon-o-x-circle')
