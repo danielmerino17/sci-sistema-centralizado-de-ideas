@@ -24,7 +24,7 @@ test('registrar una categoria', function () {
         'descripcion' => 'Ideas de ciencias',
     ]);
     
-    dd(Categoria::all());
+    // dd(Categoria::all());
 
     $this->assertDatabaseHas('categorias', [
         'nombre' => 'Ciencia',
